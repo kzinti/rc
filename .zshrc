@@ -1,11 +1,11 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/home/kzin/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="re5et"
+ZSH_THEME="agnoster"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -30,7 +30,7 @@ ZSH_THEME="re5et"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -49,7 +49,7 @@ ZSH_THEME="re5et"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git rvm python ruby rails gem)
+plugins=(git python ruby rails gem)
 
 # User configuration
 
@@ -74,6 +74,10 @@ export EDITOR='vim'
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
+# Vi mode!
+bindkey -v
+export KEYTIMEOUT=1
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -83,11 +87,20 @@ export EDITOR='vim'
 alias zshrc="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias vimrc="vim ~/.vimrc"
-alias tmux="tmux -2"
+alias tmuxrc="vim ~/.tmux.conf"
+alias promptrc="vim ~/.oh-my-zsh/themes/agnoster.zsh-theme" 
+alias tmux="tmux -2 -u"
 alias ta="tmux attach"
 alias tms="tmux new -s"
+alias sha="ssh-add ~/.ssh/jbond"
+alias wk="cd ~/workspace"
+alias szc="source ~/.zshrc"
+alias d3="cd ~/workspace/d3/vissin"
+alias cls="clear"
+alias sck="scp kzin@69.90.132.135:"
+alias mk="mosh kzin@69.90.132.135"
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export TERM='xterm-256color'
 
 SSH_ENV="$HOME/.ssh/environment"
 
@@ -111,3 +124,6 @@ else
     start_agent;
 fi
 
+unsetopt beep
+unsetopt list_beep
+cd

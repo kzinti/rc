@@ -60,6 +60,7 @@ Plugin 'endel/vim-github-colorscheme'
 " [2] File tree viewer
 Plugin 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
+"Plugin 'Valloric/YouCompleteMe'
 " [3]
 " Several plugins to help work with Tmux
 Plugin 'christoomey/vim-tmux-navigator'
@@ -72,7 +73,7 @@ Plugin 'lfilho/cosco.vim'
 
 Plugin 'jiangmiao/auto-pairs' "MANY features, but mostly closes ([{' etc
 Plugin 'vim-scripts/HTML-AutoCloseTag' "close tags after >
-Plugin 'vim-scripts/tComment' "Comment easily with gcc
+""Plugin 'vim-scripts/tComment' "Comment easily with gcc
 Plugin 'tpope/vim-repeat' "allow plugins to utilize . command
 Plugin 'tpope/vim-surround' "easily surround things...just read docs for info
 Plugin 'vim-scripts/matchit.zip' " % also matches HTML tags / words / etc
@@ -111,10 +112,9 @@ call vundle#end()
 "
 
 "map <silent> <C-m> :NERDTreeToggle<cr>
-noremap <F4> :NERDTreeToggle<CR>
-nnoremap <C-t> :call ToggleRelativeOn()<cr>
 " Close vim if only NERDTree is open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let g:NERDTreeDirArrows=0
 
 " [3]
 " Allow moving around between Tmux windows
@@ -122,11 +122,11 @@ nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
-let g:tmux_navigator_no_mappings = 1
+"let g:tmux_navigator_no_mappings = 1
 let g:tmux_navigator_save_on_switch = 1
 "
 "Open a tmux pane with Node
-nnoremap <leader>node :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd': 'node'}<cr>
+"nnoremap <leader>node :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd': 'node'}<cr>
 
 " [4]
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
@@ -236,6 +236,8 @@ set nocompatible                  " Must come first because it changes other opt
 " Put your non-Plugin stuff after this line
 
 let mapleader = " "
+noremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>r :call ToggleRelativeOn()<cr>
 
 syntax enable                     " Turn on syntax highlighting.
 filetype plugin indent on         " Turn on file type detection.
@@ -281,6 +283,8 @@ set smartcase
 set hlsearch
 nnoremap <silent> <leader>, :noh<cr> " Stop highlight after searching
 set incsearch
+
+set noswapfile
 
 "set list listchars=tab:»·,trail:·,nbsp:·
 
@@ -334,8 +338,8 @@ let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
 " resize panes
-nnoremap <silent> <Right> :vertical resize +5<cr>
-nnoremap <silent> <Left> :vertical resize -5<cr>
+nnoremap <silent> <Right> :vertical resize -5<cr>
+nnoremap <silent> <Left> :vertical resize +5<cr>
 nnoremap <silent> <Up> :resize +5<cr>
 nnoremap <silent> <Down> :resize -5<cr>
 
@@ -440,3 +444,6 @@ nnoremap <leader>o :CtrlP<CR>
 nnoremap <leader>b :CtrlPBuffer<CR>
 nnoremap <leader>f :CtrlPMRUFiles<CR>
 
+set encoding=utf-8
+
+set t_ut=
