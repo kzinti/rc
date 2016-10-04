@@ -76,11 +76,11 @@ prompt_end() {
 
 prompt_endline(){
   #prompt_segment blue black
-  echo -n " %k%F{blue}\ue0c4"
+  echo -n " %k%F{$CURRENT_BG}\ue0c4"
 }
 
 prompt_newline() {
-  echo -n "\n%K{blue}"
+  echo -n "\n%K{$CURRENT_BG}"
 }
 
 ### Prompt components
@@ -127,8 +127,8 @@ prompt_git() {
     zstyle ':vcs_info:*' enable git
     zstyle ':vcs_info:*' get-revision true
     zstyle ':vcs_info:*' check-for-changes true
-    zstyle ':vcs_info:*' stagedstr '✚'
-    zstyle ':vcs_info:*' unstagedstr '●'
+    zstyle ':vcs_info:*' stagedstr ''
+    zstyle ':vcs_info:*' unstagedstr ''
     zstyle ':vcs_info:*' formats ' %u%c'
     zstyle ':vcs_info:*' actionformats ' %u%c'
     vcs_info
