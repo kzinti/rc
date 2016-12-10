@@ -49,11 +49,11 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git python ruby rails gem)
+plugins=(git python ruby rails gem vi-mode)
 
 # User configuration
 
-export PATH="$PATH:/usr/lib:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+export PATH="/usr/lib:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PATH:"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -75,8 +75,11 @@ export EDITOR='vim'
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # Vi mode!
-bindkey -v
+#bindkey -v
 export KEYTIMEOUT=1
+
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -92,13 +95,16 @@ alias promptrc="vim ~/.oh-my-zsh/themes/agnoster.zsh-theme"
 alias tmux="tmux -2 -u"
 alias ta="tmux attach"
 alias tms="tmux new -s"
-alias sha="ssh-add ~/.ssh/jbond"
+alias sha="ssh-add ~/.ssh/id_rsa"
 alias wk="cd ~/workspace"
 alias szc="source ~/.zshrc"
-alias d3="cd ~/workspace/d3/vissin"
+alias d3="cd ~/workspace/d3"
+alias ab="cd ~/workspace/ArkaBase"
 alias cls="clear"
 alias sck="scp kzin@69.90.132.135:"
 alias mk="mosh kzin@69.90.132.135"
+alias ag="alias | grep $1"
+alias gssd="find . -maxdepth 1 -mindepth 1 -type d -exec sh -c '(echo {} && cd {} && git status -s && echo)' \\;"
 
 export TERM='xterm-256color'
 
